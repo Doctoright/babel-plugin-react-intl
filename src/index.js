@@ -256,8 +256,8 @@ export default function ({types: t}) {
                     // write `<FormattedMessage {...descriptor} />` or
                     // `<FormattedMessage id={dynamicId} />`, because it will be
                     // skipped here and extracted elsewhere. The descriptor will
-                    // be extracted only if a `defaultMessage` prop exists.
-                    if (descriptor.defaultMessage || opts.optionalDefaultMessages) {
+                    // be extracted only if an `id` prop exists.
+                    if (descriptor.id) {
                         // Evaluate the Message Descriptor values in a JSX
                         // context, then store it.
                         descriptor = evaluateMessageDescriptor(descriptor, {

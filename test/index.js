@@ -128,6 +128,25 @@ describe('options', () => {
         const actualMessages = fs.readFileSync(path.join(fixtureDir, 'actual.json'));
         assert.equal(trim(actualMessages), trim(expectedMessages));
     });
+
+    it('optionalDefaultMessages works with defineMessages', () => {
+        const fixtureDir = path.join(fixturesDir, 'defineMessages');
+
+        try {
+            transform(path.join(fixtureDir, 'actual.js'), {
+                optionalDefaultMessages: true,
+            });
+            assert(true);
+        } catch (e) {
+            console.error(e);
+            assert(false);
+        }
+
+        // Check message output
+        const expectedMessages = fs.readFileSync(path.join(fixtureDir, 'expected.json'));
+        const actualMessages = fs.readFileSync(path.join(fixtureDir, 'actual.json'));
+        assert.equal(trim(actualMessages), trim(expectedMessages));
+    });
 });
 
 describe('errors', () => {
